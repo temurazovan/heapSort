@@ -5,13 +5,13 @@ void heapify(float arr[], int heapSize, int rootIndex) {
     int leftChild = 2 * rootIndex;
     int rightChild = 2 * rootIndex + 1;
 
-    if (leftChild < heapSize && arr[leftChild] > arr[largest]) {
+    if (leftChild < heapSize && arr[leftChild] < arr[largest]) {
         largest = leftChild;
     }
-    if (rightChild < heapSize && arr[rightChild] > arr[largest]) {
+    if (rightChild < heapSize && arr[rightChild] < arr[largest]) {
         largest = rightChild;
     }
-    if (largest != rootIndex) {
+    if (largest > rootIndex) {
         std::swap(arr[rootIndex], arr[largest]);
         heapify(arr, heapSize, largest);
     }
