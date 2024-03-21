@@ -1,23 +1,23 @@
 #include <iostream>
 
-void heapify(int arr[], int size, int firstNum) {
-    int largest = firstNum;
-    int leftNum = 2 * firstNum + 1;
-    int rightNum = 2 * firstNum + 2;
+void heapify(float arr[], int heapSize, int rootIndex) {
+    int largest = rootIndex;
+    int leftChild = 2 * rootIndex;
+    int rightChild = 2 * rootIndex + 1;
 
-    if (leftNum < size && arr[leftNum > arr[largest]]) {
-        largest = leftNum;
+    if (leftChild < heapSize && arr[leftChild] > arr[largest]) {
+        largest = leftChild;
     }
-    if (rightNum < size && arr[rightNum] > arr[largest]) {
-        largest = rightNum;
+    if (rightChild < heapSize && arr[rightChild] > arr[largest]) {
+        largest = rightChild;
     }
-    if (largest != firstNum) {
-        std::swap(arr[firstNum], arr[largest]);
-        heapify(arr, size, largest);
+    if (largest != rootIndex) {
+        std::swap(arr[rootIndex], arr[largest]);
+        heapify(arr, heapSize, largest);
     }
 }
 
-void heapSort(int arr[], int size) {
+void heapSort(float arr[], int size) {
     for (int i = size/2 - 1; i >= 0; i--) {
         heapify(arr, size, i);
     }
@@ -27,16 +27,16 @@ void heapSort(int arr[], int size) {
     }
 }
 
-void printArray(int arr[], int size) {
+void printArray(float arr[], int size) {
     for (int i = 0; i < size; i++) {
         std::cout << arr[i] << " ";
     }
 }
 
 int main() {
-    int arr[15];
+    float arr[] = {1.2, 2.3, 1.11, 3.4, 5.5, 5.4, 5.3, 5.1, 1.5, 1.25, 5.41, 5.31, 5.11, 1.51, 1.251};
     int size = sizeof(arr) / sizeof(arr[0]);
-    for (int element: arr) {
+    for (float element: arr) {
         std::cin >> element;
     }
 
