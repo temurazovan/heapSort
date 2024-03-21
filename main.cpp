@@ -38,5 +38,5 @@ int main() {
     int size = sizeof(arr) / sizeof(arr[0]);
 
     heapSort(arr, size);
-    printArray(arr, 15);
+    printArray(arr, size);
 }
